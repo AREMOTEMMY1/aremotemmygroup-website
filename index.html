@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aremo Temmy Group | Global Export & Logistics Excellence</title>
+    <meta name="description" content="Premium minerals, energy resources, and agricultural commodities through an optimized global supply chain. Nigeria | USA | Austria | Japan.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #F8F8F8;
+            color: #0A1A2F;
+            line-height: 1.6;
+        }
+        
+        /* Color Palette */
+        .bg-navy { background-color: #0A1A2F; }
+        .bg-gold { background-color: #D4AF37; }
+        .bg-soft-white { background-color: #F8F8F8; }
+        .text-navy { color: #0A1A2F; }
+        .text-gold { color: #D4AF37; }
+        .border-gold { border-color: #D4AF37; }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #D4AF37;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: #D4AF37;
+            color: #0A1A2F;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #0A1A2F;
+            color: white;
+            padding: 0.875rem 2rem;
+            border: 2px solid #D4AF37;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        /* Cards */
+        .product-card {
+            background: #EFEFEF;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        
+        /* Page Management */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        .page-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Map Pins */
+        .map-pin {
+            width: 40px;
+            height: 40px;
+            background: #D4AF37;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .map-pin::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transform: rotate(45deg);
+        }
+        
+        /* AI Chat Widget */
+        #ai-chat-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+        
+        #ai-chat-button {
+            width: 60px;
+            height: 60px;
+            background: #D4AF37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s;
+        }
+        
+        #ai-chat-button:hover {
+            transform: scale(1.1);
+        }
+        
+        #ai-chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 400px;
+            height: 550px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+        }
+        
+        #ai-chat-window.open {
+            display: flex;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            #ai-chat-window {
+                width: calc(100vw - 2rem);
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-12 h-12 bg-gold rounded-lg flex items-center justify-center">
+                        <span class="text-navy font-bold text-xl">AT</span>
+                    </div>
+                    <div>
+                        <div class="text-navy font-bold text-lg">AREMO TEMMY GROUP'S</div>
+                        <div class="text-xs text-gold">Global Export Solutions</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#" onclick="navigateTo('home'); return false;" class="nav-link active text-sm font-medium">Home</a>
+                    <a href="#" onclick="navigateTo('about'); return false;" class="nav-link text-sm font-medium">About</a>
+                    <a href="#" onclick="navigateTo('products'); return false;" class="nav-link text-sm font-medium">Products</a>
+                    <a href="#" onclick="navigateTo('services'); return false;" class="nav-link text-sm font-medium">Services</a>
+                    <a href="#" onclick="navigateTo('warehouses'); return false;" class="nav-link text-sm font-medium">Warehouses</a>
+                    <a href="#" onclick="navigateTo('compliance'); return false;" class="nav-link text-sm font-medium">Compliance</a>
+                    <a href="#" onclick="navigateTo('calendar'); return false;" class="nav-link text-sm font-medium">Calendar</a>
+                    <a href="#" onclick="navigateTo('contact'); return false;" class="nav-link text-sm font-medium">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <button onclick="navigateTo('contact')" class="btn-primary text-sm">
+                    Request a Quote
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Content Container -->
+    <main>
+        
+        <!-- HOME PAGE -->
+        <section id="page-home" class="page-section active">
+            <!-- Hero Section -->
+            <div class="bg-navy text-white py-24">
+                <div class="max-w-6xl mx-auto px-6 text-center">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                        AREMO TEMMY GROUP'S<br>
+                        <span class="text-gold">Delivering Beyond Borders</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                        Premium minerals, energy resources, and agricultural commodities through an optimized global supply chain
+                    </p>
+                    <div class="flex gap-4 justify-center flex-wrap">
+                        <button onclick="navigateTo('contact')" class="btn-primary">Request a Quote</button>
+                        <button onclick="navigateTo('products')" class="btn-secondary">View Products</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Daily Motivation Quote -->
+            <div class="py-16 bg-soft-white">
+                <div class="max-w-4xl mx-auto px-6">
+                    <div class="bg-white border-2 border-gold rounded-xl p-8 text-center shadow-lg">
+                        <div class="text-gold text-sm font-semibold mb-4 uppercase tracking-wider">Daily Motivation</div>
+                        <p class="text-2xl font-light italic text-navy" id="daily-quote">
+                            "Success is built on consistency, not intensity."
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Who We Are -->
+            <div class="py-20 bg-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h2 class="text-4xl font-bold text-navy mb-6">Who We Are</h2>
+                            <p class="text-gray-600 text-lg mb-6">
+                                Aremo Temmy Group is a global export powerhouse specializing in premium minerals, energy resources, and agricultural commodities. With strategic warehouses across Nigeria, USA, Austria, and Japan, we deliver excellence beyond borders.
+                            </p>
+                            <p class="text-gray-600 text-lg">
+                                Our operations are SGS verified, ISO certified, and backed by cutting-edge logistics technology to ensure seamless delivery to any corner of the world.
+                            </p>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl h-96 flex items-center justify-center">
+                            <div class="text-6xl">🌍</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Products Grid -->
+            <div class="py-20 bg-soft-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold text-navy mb-4">Featured Products</h2>
+                        <p class="text-gray-600 text-lg">Premium commodities for global industries</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Lead Ore -->
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">💎</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Lead Ore</h3>
+                            <p class="text-gray-600 mb-6">High-grade Galena concentrates with 65%+ lead content</p>
+                            <button onclick="openAIChat('Lead Ore')" class="text-gold font-semibold text-sm hover:underline">
+                                Ask AI About This Product →
+                            </button>
+                        </div>
+                        
+                        <!-- Lithium Ore -->
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">⚡</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Lithium Ore</h3>
+                            <p class="text-gray-600 mb-6">Battery-grade lithium for energy storage solutions</p>
+                            <button onclick="openAIChat('Lithium Ore')" class="text-gold font-semibold text-sm hover:underline">
+                                Ask AI About This Product →
+                            </button>
+                        </div>
+                        
+                        <!-- Cashew Nuts -->
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🥜</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Cashew Nuts</h3>
+                            <p class="text-gray-600 mb-6">Premium grade W320, W240 for global markets</p>
+                            <button onclick="openAIChat('Cashew Nuts')" class="text-gold font-semibold text-sm hover:underline">
+                                Ask AI About This Product →
+                            </button>
+                        </div>
+                        
+                        <!-- Sesame Seeds -->
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🌾</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Sesame Seeds</h3>
+                            <p class="text-gray-600 mb-6">White & brown sesame, 99.95% purity</p>
+                            <button onclick="openAIChat('Sesame Seeds')" class="text-gold font-semibold text-sm hover:underline">
+                                Ask AI About This Product →
+                            </button>
+                        </div>
+                        
+                        <!-- Hardwood Charcoal -->
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🔥</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Hardwood Charcoal</h3>
+                            <p class="text-gray-600 mb-6">Restaurant grade, 80%+ fixed carbon</p>
+                            <button onclick="openAIChat('Hardwood Charcoal')" class="text-gold font-semibold text-sm hover:underline">
+                                Ask AI About This Product →
+                            </button>
+                        </div>
+                        
+                        <!-- Cocoa Beans -->
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🍫</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Cocoa Beans</h3>
+                            <p class="text-gray-600 mb-6">Premium fermented beans from West Africa</p>
+                            <button onclick="openAIChat('Cocoa Beans')" class="text-gold font-semibold text-sm hover:underline">
+                                Ask AI About This Product →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Global Warehouse Map -->
+            <div class="py-20 bg-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold text-navy mb-4">Global Warehouse Network</h2>
+                        <p class="text-gray-600 text-lg">Strategic locations for seamless distribution</p>
+                    </div>
+                    
+                    <div class="bg-gray-100 rounded-xl p-12 relative" style="height: 400px;">
+                        <!-- Simplified map visualization -->
+                        <div class="flex items-center justify-around h-full">
+                            <div class="text-center">
+                                <div class="map-pin mx-auto mb-4"></div>
+                                <div class="font-bold text-navy">Nigeria</div>
+                                <div class="text-sm text-gray-600">Lagos</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="map-pin mx-auto mb-4"></div>
+                                <div class="font-bold text-navy">USA</div>
+                                <div class="text-sm text-gray-600">Kansas</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="map-pin mx-auto mb-4"></div>
+                                <div class="font-bold text-navy">Austria</div>
+                                <div class="text-sm text-gray-600">Vienna</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="map-pin mx-auto mb-4"></div>
+                                <div class="font-bold text-navy">Japan</div>
+                                <div class="text-sm text-gray-600">Chiba</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Why Choose Us -->
+            <div class="py-20 bg-soft-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold text-navy mb-4">Why Choose Us</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gold rounded-full mx-auto mb-4 flex items-center justify-center text-3xl">✓</div>
+                            <h3 class="font-bold text-navy mb-2">SGS Verified</h3>
+                            <p class="text-gray-600 text-sm">International quality standards</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gold rounded-full mx-auto mb-4 flex items-center justify-center text-3xl">🏅</div>
+                            <h3 class="font-bold text-navy mb-2">ISO Certified</h3>
+                            <p class="text-gray-600 text-sm">Compliant operations</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gold rounded-full mx-auto mb-4 flex items-center justify-center text-3xl">🚢</div>
+                            <h3 class="font-bold text-navy mb-2">Global Logistics</h3>
+                            <p class="text-gray-600 text-sm">Worldwide delivery network</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-gold rounded-full mx-auto mb-4 flex items-center justify-center text-3xl">🤖</div>
+                            <h3 class="font-bold text-navy mb-2">AI Support</h3>
+                            <p class="text-gray-600 text-sm">24/7 intelligent assistance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS PAGE -->
+        <section id="page-products" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-5xl font-bold text-navy mb-6">Our Products</h2>
+                        <p class="text-xl text-gray-600">Premium commodities for global industries</p>
+                    </div>
+                    
+                    <!-- AI Product Finder -->
+                    <div class="bg-soft-white border-2 border-gold rounded-xl p-10 mb-20 max-w-5xl mx-auto">
+                        <div class="text-center mb-8">
+                            <h3 class="text-3xl font-bold text-navy mb-3">Smart Product Finder</h3>
+                            <p class="text-gray-600">Let our AI assist your procurement decisions</p>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-3 gap-6 mb-8">
+                            <div>
+                                <label class="block text-sm font-semibold text-navy mb-2">Product Type</label>
+                                <select id="finder-product" class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                                    <option>Lead Ore</option>
+                                    <option>Lithium Ore</option>
+                                    <option>Cashew Nuts</option>
+                                    <option>Sesame Seeds</option>
+                                    <option>Hardwood Charcoal</option>
+                                    <option>Cocoa Beans</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy mb-2">Quantity (MT)</label>
+                                <input type="number" id="finder-quantity" placeholder="e.g., 500" class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-navy mb-2">Destination Port</label>
+                                <input type="text" id="finder-port" placeholder="e.g., Port of Chiba" class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                            </div>
+                        </div>
+                        
+                        <button onclick="runProductFinder()" class="w-full btn-primary py-4 text-lg">
+                            Generate Feasibility Report
+                        </button>
+                        
+                        <div id="finder-result" class="mt-8 bg-white border-2 border-gray-200 rounded-lg p-6 hidden">
+                            <div class="text-navy" id="finder-output"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Full Product Catalog -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">💎</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Lead Ore</h3>
+                            <p class="text-gray-600 mb-4">High-grade Galena concentrates</p>
+                            <div class="text-sm text-gray-500 space-y-1 mb-6">
+                                <div>• Lead content: 65%+</div>
+                                <div>• Origin: Nigeria</div>
+                                <div>• SGS verified</div>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="btn-secondary w-full">Request Quote</button>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">⚡</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Lithium Ore</h3>
+                            <p class="text-gray-600 mb-4">Battery-grade lithium</p>
+                            <div class="text-sm text-gray-500 space-y-1 mb-6">
+                                <div>• Spodumene concentrate</div>
+                                <div>• Li2O: 6%+</div>
+                                <div>• Export ready</div>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="btn-secondary w-full">Request Quote</button>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🥜</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Cashew Nuts</h3>
+                            <p class="text-gray-600 mb-4">Premium grade W320, W240</p>
+                            <div class="text-sm text-gray-500 space-y-1 mb-6">
+                                <div>• West African origin</div>
+                                <div>• Moisture: <5%</div>
+                                <div>• Food grade certified</div>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="btn-secondary w-full">Request Quote</button>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🌾</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Sesame Seeds</h3>
+                            <p class="text-gray-600 mb-4">White & brown varieties</p>
+                            <div class="text-sm text-gray-500 space-y-1 mb-6">
+                                <div>• Purity: 99.95%</div>
+                                <div>• FFA: <2%</div>
+                                <div>• Export quality</div>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="btn-secondary w-full">Request Quote</button>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🔥</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Hardwood Charcoal</h3>
+                            <p class="text-gray-600 mb-4">Restaurant & industrial grade</p>
+                            <div class="text-sm text-gray-500 space-y-1 mb-6">
+                                <div>• Fixed carbon: 80%+</div>
+                                <div>• Low ash content</div>
+                                <div>• High calorific value</div>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="btn-secondary w-full">Request Quote</button>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="text-5xl mb-4">🍫</div>
+                            <h3 class="text-2xl font-bold text-navy mb-3">Cocoa Beans</h3>
+                            <p class="text-gray-600 mb-4">Premium fermented beans</p>
+                            <div class="text-sm text-gray-500 space-y-1 mb-6">
+                                <div>• West African origin</div>
+                                <div>• Grade 1 & 2</div>
+                                <div>• Certified organic available</div>
+                            </div>
+                            <button onclick="navigateTo('contact')" class="btn-secondary w-full">Request Quote</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT PAGE -->
+        <section id="page-about" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="max-w-5xl mx-auto px-6">
+                    <h2 class="text-5xl font-bold text-navy mb-12 text-center">About Aremo Temmy Group</h2>
+                    
+                    <div class="prose prose-lg max-w-none text-gray-700">
+                        <p class="text-xl mb-8">
+                            Aremo Temmy Group (ATG) is a leading global export and logistics company specializing in premium minerals, energy resources, and agricultural commodities. Founded with a vision to bridge continents through reliable trade, we operate with integrity, precision, and unwavering commitment to excellence.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 my-12">
+                            <div class="bg-soft-white p-8 rounded-xl">
+                                <h3 class="text-2xl font-bold text-navy mb-4">Our Mission</h3>
+                                <p class="text-gray-600">
+                                    To deliver Africa's raw potential to the global industrial stage with zero friction, ensuring quality, compliance, and customer satisfaction at every touchpoint.
+                                </p>
+                            </div>
+                            <div class="bg-soft-white p-8 rounded-xl">
+                                <h3 class="text-2xl font-bold text-navy mb-4">Our Vision</h3>
+                                <p class="text-gray-600">
+                                    Setting the gold standard for mineral and agricultural commodity logistics by 2030, recognized globally for innovation and reliability.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-3xl font-bold text-navy mb-6">Global Operations</h3>
+                        <p class="mb-6">
+                            With strategic warehouses in Nigeria, USA, Austria, and Japan, we maintain a truly global footprint. Our operations are SGS verified, ISO certified, and supported by cutting-edge tracking technology that ensures transparency from source to destination.
+                        </p>
+                        
+                        <h3 class="text-3xl font-bold text-navy mb-6">Core Values</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><strong class="text-navy">Integrity:</strong> Every transaction is conducted with honesty and transparency</li>
+                            <li><strong class="text-navy">Excellence:</strong> We pursue the highest standards in quality and service</li>
+                            <li><strong class="text-navy">Innovation:</strong> Leveraging AI and modern technology for superior customer experience</li>
+                            <li><strong class="text-navy">Reliability:</strong> Consistent delivery on promises, every single time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES PAGE -->
+        <section id="page-services" class="page-section">
+            <div class="py-20 bg-soft-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-5xl font-bold text-navy mb-6">Our Services</h2>
+                        <p class="text-xl text-gray-600">End-to-end export and logistics solutions</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="bg-white p-10 rounded-xl shadow-lg">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-6 text-3xl">📦</div>
+                            <h3 class="text-2xl font-bold text-navy mb-4">Export Management</h3>
+                            <p class="text-gray-600 mb-4">
+                                Comprehensive export services including documentation, compliance, customs clearance, and quality assurance. We handle the entire export chain from source to international delivery.
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>✓ SGS inspection coordination</li>
+                                <li>✓ Export license processing</li>
+                                <li>✓ Quality certification</li>
+                                <li>✓ Customs documentation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-10 rounded-xl shadow-lg">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-6 text-3xl">🚢</div>
+                            <h3 class="text-2xl font-bold text-navy mb-4">Global Logistics</h3>
+                            <p class="text-gray-600 mb-4">
+                                Strategic warehousing and distribution across four continents. Real-time tracking, inventory management, and optimized routing for cost-effective delivery.
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>✓ Multi-continent warehousing</li>
+                                <li>✓ Container optimization</li>
+                                <li>✓ Real-time tracking</li>
+                                <li>✓ Last-mile delivery coordination</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-10 rounded-xl shadow-lg">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-6 text-3xl">🔍</div>
+                            <h3 class="text-2xl font-bold text-navy mb-4">Quality Assurance</h3>
+                            <p class="text-gray-600 mb-4">
+                                Independent third-party verification through SGS and other international bodies. Every shipment meets or exceeds global quality standards.
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>✓ Pre-shipment inspection</li>
+                                <li>✓ Laboratory analysis</li>
+                                <li>✓ Certificate of analysis</li>
+                                <li>✓ Quality guarantees</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white p-10 rounded-xl shadow-lg">
+                            <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center mb-6 text-3xl">🤖</div>
+                            <h3 class="text-2xl font-bold text-navy mb-4">AI-Powered Support</h3>
+                            <p class="text-gray-600 mb-4">
+                                24/7 intelligent customer support through our AI assistant. Get instant answers on products, pricing, availability, and logistics.
+                            </p>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>✓ Product recommendations</li>
+                                <li>✓ Feasibility analysis</li>
+                                <li>✓ Pricing estimates</li>
+                                <li>✓ Shipment tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WAREHOUSES PAGE -->
+        <section id="page-warehouses" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-5xl font-bold text-navy mb-6">Global Warehouse Network</h2>
+                        <p class="text-xl text-gray-600">Strategic locations across four continents</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="bg-soft-white p-10 rounded-xl">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="map-pin flex-shrink-0"></div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-navy mb-2">Nigeria (Lagos)</h3>
+                                    <p class="text-gold font-semibold mb-4">Primary Export Hub</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Our flagship facility in Lagos serves as the main aggregation point for minerals and agricultural products from across West Africa. State-of-the-art storage and inspection capabilities.
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <div>• Capacity: 50,000 MT</div>
+                                <div>• SGS inspection facility on-site</div>
+                                <div>• Direct port access</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-soft-white p-10 rounded-xl">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="map-pin flex-shrink-0"></div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-navy mb-2">USA (Kansas)</h3>
+                                    <p class="text-gold font-semibold mb-4">Americas Distribution Center</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Centrally located in the heartland of America, our Kansas facility enables rapid distribution throughout North and South America with optimal logistics efficiency.
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <div>• Capacity: 30,000 MT</div>
+                                <div>• FDA compliant for food products</div>
+                                <div>• Rail and truck access</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-soft-white p-10 rounded-xl">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="map-pin flex-shrink-0"></div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-navy mb-2">Austria (Vienna)</h3>
+                                    <p class="text-gold font-semibold mb-4">European Gateway</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Strategic positioning in Central Europe provides seamless access to EU markets. Full compliance with European quality and safety standards.
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <div>• Capacity: 25,000 MT</div>
+                                <div>• EU customs bonded</div>
+                                <div>• ISO 9001 certified</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-soft-white p-10 rounded-xl">
+                            <div class="flex items-start gap-4 mb-6">
+                                <div class="map-pin flex-shrink-0"></div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-navy mb-2">Japan (Chiba)</h3>
+                                    <p class="text-gold font-semibold mb-4">Asia-Pacific Hub</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Gateway to the Asia-Pacific region with direct access to major Japanese and regional ports. Specialized in serving high-precision industrial clients.
+                            </p>
+                            <div class="text-sm text-gray-500">
+                                <div>• Capacity: 20,000 MT</div>
+                                <div>• Temperature-controlled zones</div>
+                                <div>• Advanced quality labs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPLIANCE PAGE -->
+        <section id="page-compliance" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="max-w-5xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-5xl font-bold text-navy mb-6">Compliance & Certifications</h2>
+                        <p class="text-xl text-gray-600">Meeting global standards for quality and integrity</p>
+                    </div>
+                    
+                    <!-- Certification Badges -->
+                    <div class="grid md:grid-cols-3 gap-8 mb-16">
+                        <div class="bg-soft-white p-8 rounded-xl text-center">
+                            <div class="w-24 h-24 bg-navy rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-gold text-3xl font-bold">SGS</span>
+                            </div>
+                            <h3 class="font-bold text-navy mb-2">SGS Verified</h3>
+                            <p class="text-sm text-gray-600">Independent quality inspection and certification</p>
+                        </div>
+                        
+                        <div class="bg-soft-white p-8 rounded-xl text-center">
+                            <div class="w-24 h-24 bg-navy rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-gold text-3xl font-bold">ISO</span>
+                            </div>
+                            <h3 class="font-bold text-navy mb-2">ISO 9001:2015</h3>
+                            <p class="text-sm text-gray-600">Quality management system certification</p>
+                        </div>
+                        
+                        <div class="bg-soft-white p-8 rounded-xl text-center">
+                            <div class="w-24 h-24 bg-navy rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <span class="text-gold text-3xl font-bold">FDA</span>
+                            </div>
+                            <h3 class="font-bold text-navy mb-2">FDA Compliant</h3>
+                            <p class="text-sm text-gray-600">Food safety standards for agricultural products</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Compliance Documents -->
+                    <div class="bg-soft-white p-10 rounded-xl">
+                        <h3 class="text-2xl font-bold text-navy mb-6">Available Documentation</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white rounded-lg">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-2xl">📄</div>
+                                    <div>
+                                        <div class="font-semibold text-navy">Certificate of Origin</div>
+                                        <div class="text-sm text-gray-500">Issued by relevant authorities</div>
+                                    </div>
+                                </div>
+                                <button class="text-gold font-semibold text-sm hover:underline">Request</button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white rounded-lg">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-2xl">📄</div>
+                                    <div>
+                                        <div class="font-semibold text-navy">SGS Inspection Report</div>
+                                        <div class="text-sm text-gray-500">Quality and quantity certification</div>
+                                    </div>
+                                </div>
+                                <button class="text-gold font-semibold text-sm hover:underline">Request</button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white rounded-lg">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-2xl">📄</div>
+                                    <div>
+                                        <div class="font-semibold text-navy">Certificate of Analysis</div>
+                                        <div class="text-sm text-gray-500">Detailed product specifications</div>
+                                    </div>
+                                </div>
+                                <button class="text-gold font-semibold text-sm hover:underline">Request</button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white rounded-lg">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-2xl">📄</div>
+                                    <div>
+                                        <div class="font-semibold text-navy">Export License</div>
+                                        <div class="text-sm text-gray-500">Government authorization</div>
+                                    </div>
+                                </div>
+                                <button class="text-gold font-semibold text-sm hover:underline">Request</button>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-white rounded-lg">
+                                <div class="flex items-center gap-4">
+                                    <div class="text-2xl">📄</div>
+                                    <div>
+                                        <div class="font-semibold text-navy">Bill of Lading</div>
+                                        <div class="text-sm text-gray-500">Shipping documentation</div>
+                                    </div>
+                                </div>
+                                <button class="text-gold font-semibold text-sm hover:underline">Request</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALENDAR PAGE -->
+        <section id="page-calendar" class="page-section">
+            <div class="py-20 bg-white">
+                <div class="max-w-4xl mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-5xl font-bold text-navy mb-4">Operational Calendar</h2>
+                        <p class="text-xl text-gray-600">Export windows and inspection schedules</p>
+                    </div>
+                    
+                    <div class="bg-soft-white border-2 border-gold rounded-xl p-8">
+                        <div class="flex justify-between items-center mb-8">
+                            <h3 class="text-2xl font-bold text-navy">February 2026</h3>
+                            <div class="flex gap-2">
+                                <button class="w-10 h-10 border-2 border-gray-300 rounded-lg hover:border-gold">←</button>
+                                <button class="w-10 h-10 border-2 border-gray-300 rounded-lg hover:border-gold">→</button>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-7 gap-2 mb-4">
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Sun</div>
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Mon</div>
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Tue</div>
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Wed</div>
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Thu</div>
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Fri</div>
+                            <div class="text-center text-sm font-semibold text-gray-500 p-2">Sat</div>
+                        </div>
+                        
+                        <div class="grid grid-cols-7 gap-2" id="calendar-days">
+                            <!-- Calendar days will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="mt-8 flex flex-wrap gap-6 justify-center text-sm">
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-gold rounded"></div>
+                                <span>Export Windows</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-red-500 rounded"></div>
+                                <span>Public Holidays</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 border-2 border-gray-400 rounded"></div>
+                                <span>Available</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <button onclick="navigateTo('contact')" class="btn-primary text-lg">
+                            Book Inspection Appointment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="page-contact" class="page-section">
+            <div class="py-20 bg-soft-white">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="text-center mb-16">
+                        <h2 class="text-5xl font-bold text-navy mb-4">Contact Us</h2>
+                        <p class="text-xl text-gray-600">Get in touch with our global team</p>
+                    </div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <!-- Contact Information -->
+                        <div class="space-y-8">
+                            <div class="bg-white border-2 border-gold rounded-xl p-8">
+                                <h3 class="text-2xl font-bold text-navy mb-6">Sales & Procurement</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center text-gold text-xl">📧</div>
+                                        <div>
+                                            <div class="font-semibold text-navy">Email</div>
+                                            <a href="mailto:sale.aremotemmygroup@mail.com" class="text-gold hover:underline">sale.aremotemmygroup@mail.com</a>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center text-gold text-xl">📧</div>
+                                        <div>
+                                            <div class="font-semibold text-navy">General Inquiries</div>
+                                            <a href="mailto:aremotemmygroup@mail.com" class="text-gold hover:underline">aremotemmygroup@mail.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border-2 border-gold rounded-xl p-8">
+                                <h3 class="text-2xl font-bold text-navy mb-6">Phone Direct</h3>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <div class="font-semibold text-navy mb-2">Nigeria</div>
+                                        <div class="text-gray-600 space-y-1 text-sm">
+                                            <div>+234 810 857 2941</div>
+                                            <div>+234 816 762 9397</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-navy mb-2">USA</div>
+                                        <div class="text-gray-600 text-sm">
+                                            +1 316 264 9700
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-navy mb-2">UK</div>
+                                        <div class="text-gray-600 text-sm">
+                                            +44 7465 796642
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="font-semibold text-navy mb-2">General Info</div>
+                                        <div class="text-gray-600 text-sm">
+                                            info@aremotemmygroup.com
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-4 border-t border-gray-200">
+                                    <p class="text-sm text-gray-500">Response time: &lt; 2 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="bg-white border-2 border-gold rounded-xl p-10">
+                            <h3 class="text-3xl font-bold text-navy mb-8">Request a Quote</h3>
+                            <form class="space-y-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-navy mb-2">Company Name *</label>
+                                        <input type="text" required class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-navy mb-2">Contact Person *</label>
+                                        <input type="text" required class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-navy mb-2">Business Email *</label>
+                                    <input type="email" required class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-navy mb-2">Phone Number</label>
+                                    <input type="tel" class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-navy mb-2">Product of Interest</label>
+                                    <select class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none">
+                                        <option>Select a product</option>
+                                        <option>Lead Ore</option>
+                                        <option>Lithium Ore</option>
+                                        <option>Cashew Nuts</option>
+                                        <option>Sesame Seeds</option>
+                                        <option>Hardwood Charcoal</option>
+                                        <option>Cocoa Beans</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-semibold text-navy mb-2">Message *</label>
+                                    <textarea rows="5" required placeholder="Please provide details about your requirements (quantity, specifications, delivery location, etc.)" class="w-full border-2 border-gray-300 rounded-lg p-3 focus:border-gold outline-none"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full btn-primary py-4 text-lg">
+                                    Submit Inquiry
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <div class="text-4xl font-bold mb-4">AREMO TEMMY GROUP'S</div>
+                <p class="text-xl text-gold mb-2">Global reach. Local precision. Trusted delivery.</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-8 text-sm mb-12">
+                <a href="#" onclick="navigateTo('home'); return false;" class="hover:text-gold">Home</a>
+                <a href="#" onclick="navigateTo('about'); return false;" class="hover:text-gold">About</a>
+                <a href="#" onclick="navigateTo('products'); return false;" class="hover:text-gold">Products</a>
+                <a href="#" onclick="navigateTo('services'); return false;" class="hover:text-gold">Services</a>
+                <a href="#" onclick="navigateTo('contact'); return false;" class="hover:text-gold">Contact</a>
+            </div>
+            
+            <div class="text-center text-sm text-gray-400">
+                <p>© 2026 Aremo Temmy Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget">
+        <div id="ai-chat-button" onclick="toggleAIChat()">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-navy">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+        </div>
+        
+        <div id="ai-chat-window">
+            <div class="bg-navy text-white p-6 rounded-t-xl flex items-center justify-between">
+                <div>
+                    <div class="font-bold text-lg">ATG AI Assistant</div>
+                    <div class="text-xs text-gold">Ask me anything about our products</div>
+                </div>
+                <button onclick="toggleAIChat()" class="text-white hover:text-gold">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="ai-chat-messages" class="flex-1 p-6 overflow-y-auto" style="height: 400px; background: #f8f8f8;">
+                <div class="bg-white rounded-lg p-4 mb-4 shadow-sm">
+                    <div class="font-semibold text-navy text-sm mb-2">ATG AI</div>
+                    <div class="text-gray-700 text-sm">
+                        Hello! I'm here to help you with product information, pricing, availability, and export logistics. How can I assist you today?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex gap-2">
+                    <input 
+                        type="text" 
+                        id="ai-chat-input" 
+                        placeholder="Ask about our products..." 
+                        class="flex-1 border-2 border-gray-300 rounded-lg p-3 text-sm focus:border-gold outline-none"
+                        onkeypress="if(event.key === 'Enter') sendAIMessage()"
+                    >
+                    <button onclick="sendAIMessage()" class="btn-primary px-6">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation Management
+        function navigateTo(page) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById('page-' + page).classList.add('active');
+            
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Product Finder
+        function runProductFinder() {
+            const product = document.getElementById('finder-product').value;
+            const quantity = document.getElementById('finder-quantity').value;
+            const port = document.getElementById('finder-port').value;
+            
+            const resultDiv = document.getElementById('finder-result');
+            const outputDiv = document.getElementById('finder-output');
+            
+            if (!quantity || !port) {
+                alert('Please fill in quantity and destination port');
+                return;
+            }
+            
+            const report = `
+                <h4 class="font-bold text-lg mb-4">Feasibility Report: ${product}</h4>
+                <div class="space-y-3 text-sm">
+                    <div><strong>Product:</strong> ${product}</div>
+                    <div><strong>Requested Quantity:</strong> ${quantity} MT</div>
+                    <div><strong>Destination:</strong> ${port}</div>
+                    <div class="pt-3 border-t border-gray-200">
+                        <strong>Assessment:</strong>
+                        <p class="mt-2">Based on current inventory and logistics capacity, this order is <span class="text-green-600 font-semibold">FEASIBLE</span>. Estimated lead time: 21-28 days from order confirmation.</p>
+                    </div>
+                    <div>
+                        <strong>Next Steps:</strong>
+                        <ol class="mt-2 space-y-1 list-decimal list-inside">
+                            <li>Submit formal quote request</li>
+                            <li>SGS inspection scheduling</li>
+                            <li>Documentation preparation</li>
+                            <li>Shipment arrangement</li>
+                        </ol>
+                    </div>
+                </div>
+                <button onclick="navigateTo('contact')" class="mt-6 btn-primary w-full">Request Formal Quote</button>
+            `;
+            
+            outputDiv.innerHTML = report;
+            resultDiv.classList.remove('hidden');
+        }
+        
+        // AI Chat Widget
+        function toggleAIChat() {
+            const chatWindow = document.getElementById('ai-chat-window');
+            chatWindow.classList.toggle('open');
+        }
+        
+        function openAIChat(product) {
+            const chatWindow = document.getElementById('ai-chat-window');
+            const messagesDiv = document.getElementById('ai-chat-messages');
+            
+            chatWindow.classList.add('open');
+            
+            const userMessage = `Tell me about ${product}`;
+            const aiResponse = `
+                <div class="bg-blue-50 rounded-lg p-4 mb-4 shadow-sm ml-8">
+                    <div class="font-semibold text-navy text-sm mb-2 text-right">You</div>
+                    <div class="text-gray-700 text-sm text-right">${userMessage}</div>
+                </div>
+                <div class="bg-white rounded-lg p-4 mb-4 shadow-sm mr-8">
+                    <div class="font-semibold text-navy text-sm mb-2">ATG AI</div>
+                    <div class="text-gray-700 text-sm">
+                        Great choice! ${product} is one of our premium products. We source high-quality ${product} with full SGS verification and ISO compliance. 
+                        <br><br>
+                        Would you like to know about:
+                        <ul class="mt-2 space-y-1">
+                            <li>• Specifications and grades available</li>
+                            <li>• Current pricing and availability</li>
+                            <li>• Shipping options to your location</li>
+                            <li>• Required documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            messagesDiv.innerHTML += aiResponse;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        function sendAIMessage() {
+            const input = document.getElementById('ai-chat-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const messagesDiv = document.getElementById('ai-chat-messages');
+            
+            // Add user message
+            const userMsg = `
+                <div class="bg-blue-50 rounded-lg p-4 mb-4 shadow-sm ml-8">
+                    <div class="font-semibold text-navy text-sm mb-2 text-right">You</div>
+                    <div class="text-gray-700 text-sm text-right">${message}</div>
+                </div>
+            `;
+            
+            messagesDiv.innerHTML += userMsg;
+            input.value = '';
+            
+            // Simulate AI response
+            setTimeout(() => {
+                const aiMsg = `
+                    <div class="bg-white rounded-lg p-4 mb-4 shadow-sm mr-8">
+                        <div class="font-semibold text-navy text-sm mb-2">ATG AI</div>
+                        <div class="text-gray-700 text-sm">
+                            Thank you for your question! For specific product inquiries, pricing, and availability, I recommend contacting our sales team directly at sale.aremotemmygroup@mail.com or using our quote request form. They'll provide you with detailed information tailored to your needs.
+                        </div>
+                    </div>
+                `;
+                messagesDiv.innerHTML += aiMsg;
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 1000);
+            
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+        
+        // Calendar Generation
+        function generateCalendar() {
+            const calendarDays = document.getElementById('calendar-days');
+            if (!calendarDays) return;
+            
+            const daysInMonth = 28; // February 2026
+            const startDay = 6; // Saturday
+            
+            let html = '';
+            
+            // Empty cells for days before month starts
+            for (let i = 0; i < startDay; i++) {
+                html += '<div class="calendar-day"></div>';
+            }
+            
+            // Export windows: 5, 10, 15, 20, 25
+            // Holidays: 14 (Valentine's Day)
+            const exportDays = [5, 10, 15, 20, 25];
+            const holidays = [14];
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                let classes = 'calendar-day bg-white border-2 border-gray-200 hover:border-gold cursor-pointer';
+                
+                if (exportDays.includes(day)) {
+                    classes = 'calendar-day bg-gold text-navy font-bold border-2 border-gold';
+                } else if (holidays.includes(day)) {
+                    classes = 'calendar-day bg-red-100 text-red-600 font-bold border-2 border-red-300';
+                }
+                
+                html += `<div class="${classes}">${day}</div>`;
+            }
+            
+            calendarDays.innerHTML = html;
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCalendar();
+            
+            // Daily quotes rotation
+            const quotes = [
+                "Success is built on consistency, not intensity.",
+                "Excellence is not a destination; it's a continuous journey.",
+                "In global trade, trust is the ultimate currency.",
+                "Quality never goes out of style.",
+                "The best time to plant a tree was 20 years ago. The second best time is now."
+            ];
+            
+            const today = new Date().getDate();
+            const quoteIndex = today % quotes.length;
+            document.getElementById('daily-quote').textContent = `"${quotes[quoteIndex]}"`;
+        });
+    </script>
+
+</body>
+</html>
