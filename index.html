@@ -16,6 +16,36 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
+
+<script>
+document.querySelector("form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = {
+        company: this.querySelector('input[type="text"]').value,
+        email: this.querySelector('input[type="email"]').value,
+        message: this.querySelector('textarea').value
+    };
+
+    try {
+        const res = await fetch("/api/shipments/create", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await res.json();
+
+        alert("Shipment Created ID: " + data.id);
+
+    } catch (err) {
+        alert("System not connected yet");
+    }
+});
+</script>
+      
       font-family: "Inter", sans-serif;
       background: #f8f8f8;
       color: #0a1a2f;
